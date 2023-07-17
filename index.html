@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./Assets/css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -11,9 +13,10 @@
 <h1>Weather Dashboard</h1>
     </header>
     <main>
-        <section id="search-city">
+        <section id="search-column" class="search-menu">
             <h2>Search for a City:</h2>
             <input type="text" placeholder="Search">
+            <br>
             <button>Search</button>
             <ul>
                 <li></li>
@@ -30,15 +33,17 @@
         </section>
 
         <section id="five-day-forecast">
-            <ul>
-                <li>Date</li>
-                <li>Temp:</li>
-                <li>Wind:</li>
-                <li>Humidity:</li>
-            </ul>
+            <h2>5 Day Forecast:</h2>
+            <div id="daily-forecast">
+                <ul>
+                    <li>Date</li>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                </ul>
+            </div>
         </section>
-
     </main>
-    
+
 </body>
 </html>
