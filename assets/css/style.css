@@ -34,7 +34,7 @@ body {
     margin: 0.5rem;
 }
 
-#today-forecast {
+.forecast {
     border-style: solid;
     border-color: black;
     width: 70%;
@@ -44,10 +44,19 @@ body {
 }
 
 #five-day-forecast {
-    border-style: solid;
     border-color: black;
     width: 70%;
     float: right;
     height: 20rem;
     margin:1rem;
+}
+
+#forecast-list {
+    display: flex;
+    margin-top: 3rem;
+}
+
+#forecast-list li {
+    margin-right: 4rem;
+    margin-top: 1rem;
 }
