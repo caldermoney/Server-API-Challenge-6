@@ -10,6 +10,10 @@ header {
     margin-top: 0;
 }
 
+header h1 {
+    color: white;
+}
+
 
 body {
     width: 100%;
@@ -43,6 +47,11 @@ body {
     margin: 1rem;
 }
 
+.forecast #city {
+    font-size:xx-large;
+    font-weight: bold;
+}
+
 #five-day-forecast {
     border-color: black;
     width: 70%;
@@ -53,10 +62,34 @@ body {
 
 #forecast-list {
     display: flex;
-    margin-top: 3rem;
+    justify-content: center;
+    list-style: none;
+    flex-direction: row;
+}
+
+#forecast-list ul {
+    display: none;
 }
 
 #forecast-list li {
-    margin-right: 4rem;
-    margin-top: 1rem;
+    display: block;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: lightgray;
+}
+
+#savedCitiesContainer li {
+    display: block;
+    width: 80%;
+    margin: 0.5rem auto;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: lightgray;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#savedCitiesContainer li:hover {
+    background-color: #d9d9d9;
 }

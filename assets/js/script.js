@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
     $('button').click(function() {
@@ -32,7 +33,7 @@ $(document).ready(function() {
                             document.getElementById('humidity').textContent = 'Humidity: ' + humidity;
 
                             $.ajax({
-                                url: `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&cnt=40`,
+                                url: `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}&cnt=40`,
                                 method: 'GET',
                                 success: function(weatherForecast) {
                                     var dayOne = weatherForecast.list[3];
@@ -68,10 +69,15 @@ $(document).ready(function() {
                                     document.getElementById('dayFourHumidity').textContent = 'Humidity: ' + dayFour.main.humidity;
 
                                     document.getElementById('dayFiveDate').textContent = datePartFive;
-                                    document.getElementById('dayFiveTemp').textContent = 'Temperature: ' + dayFour.main.temp;
-                                    document.getElementById('dayFiveWind').textContent = 'Wind Speed: ' + dayFour.wind.speed;
-                                    document.getElementById('dayFiveHumidity').textContent = 'Humidity: ' + dayFour.main.humidity;
-                                    
+                                    document.getElementById('dayFiveTemp').textContent = 'Temperature: ' + dayFive.main.temp;
+                                    document.getElementById('dayFiveWind').textContent = 'Wind Speed: ' + dayFive.wind.speed;
+                                    document.getElementById('dayFiveHumidity').textContent = 'Humidity: ' + dayFive.main.humidity;
+
+                                    $("#dayOneDate, #dayOneTemp, #dayOneWind, #dayOneHumidity").parent().show();
+                                    $("#dayTwoDate, #dayTwoTemp, #dayTwoWind, #dayTwoHumidity").parent().show();
+                                    $("#dayThreeDate, #dayThreeTemp, #dayThreeWind, #dayThreeHumidity").parent().show();
+                                    $("#dayFourDate, #dayFourTemp, #dayFourWind, #dayFourHumidity").parent().show();
+                                    $("#dayFiveDate, #dayFiveTemp, #dayFiveWind, #dayFiveHumidity").parent().show();
                                 },
                                 error: function(error) {
                                     console.log(error);
@@ -90,17 +96,19 @@ $(document).ready(function() {
                 }
             });
 
-            
-        var savedCities = JSON.parse(localStorage.getItem('savedCity')) || [];
-        savedCities.push(cityName);
-        localStorage.setItem('savedCity', JSON.stringify(savedCities));
+           
+        let savedCities = JSON.parse(localStorage.getItem('savedCity')) || [];
+        if (!savedCities.includes(cityName)) {
+            savedCities.push(cityName);
+            localStorage.setItem('savedCity', JSON.stringify(savedCities));
+        }
+        populateSavedCities(savedCities);
 
-        var savedCitiesContainer = document.getElementById('savedCitiesContainer');
-        savedCitiesContainer.innerHTML = '';
-        savedCities.forEach(function(city) {
-            var li = document.createElement('li');
-            li.textContent = city;
-            savedCitiesContainer.appendChild(li);  
-        })
+        updateSavedCities(cityName);
+        populateSavedCitiesButtons();
     });
+
+    let initialSavedCities = JSON.parse(localStorage.getItem('savedCity')) || [];
+    populateSavedCities(initialSavedCities);
+
 });
