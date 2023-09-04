@@ -72,7 +72,6 @@ body {
 }
 
 #forecast-list li {
-    display: block;
     border: 1px solid black;
     padding: 10px;
     background-color: lightgray;
@@ -92,4 +91,12 @@ body {
 
 #savedCitiesContainer li:hover {
     background-color: #d9d9d9;
+}
+
+#search-button {
+    background-color: #d9d9d9;
+}
+
+button {
+    background-color: aquamarine;
 }
