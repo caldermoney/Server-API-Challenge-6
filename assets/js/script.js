@@ -39,7 +39,7 @@ $(document).ready(function() {
 
         // Make an AJAX call to get coordinates of the entered city
         $.ajax({
-            url: 'http://api.openweathermap.org/geo/1.0/direct',
+            url: 'https://api.openweathermap.org/geo/1.0/direct',
             method: 'GET',
             data: {
                 q: cityName,
